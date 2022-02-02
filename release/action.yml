@@ -10,6 +10,7 @@ runs:
       id: tag
       run: |
         echo ::set-output name=tag::${GITHUB_REF#refs/tags/}
+      shell: bash
 
     - name: Create release
       uses: actions/create-release@v1
