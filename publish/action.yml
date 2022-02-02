@@ -5,6 +5,8 @@ inputs:
     default: "artifact"
   artifact-path:
     default: "dist"
+  pypi-api-token:
+    required: true
 runs:
   using: 'composite'
   steps:
@@ -30,7 +32,7 @@ runs:
 
     - name: Configure pypi credentials
       env:
-        PYPI_API_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
+        PYPI_API_TOKEN: ${{ inputs.pypi-api-token }}
       run: |
         poetry config http-basic.pypi __token__ "$PYPI_API_TOKEN"
       shell: bash
